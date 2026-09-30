@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Digital Heritage Archive - Admin Dashboard</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="bg-[#070e22] text-white p-4 font-sans">
+
+<!-- Header -->
+<div class="bg-white/5 border border-white/10 rounded-xl p-4 flex justify-between items-center">
+  <div>
+    <h1 class="text-2xl font-bold text-blue-400">DIGITAL HERITAGE ARCHIVE - Admin Dashboard</h1>
+    <p class="text-sm text-gray-400">AI-Powered Institutional Archive • Last updated: 29 Sept 2026</p>
+  </div>
+  <span class="bg-teal-600/20 px-4 py-1 rounded-full text-sm">Admin</span>
+</div>
+
+<!-- KPIs -->
+<div class="grid grid-cols-1 md:grid-cols-4 gap-4 mt-6">
+  <div class="bg-white/5 border border-white/10 rounded-xl p-5"><p class="text-gray-400 text-sm">Total Memorials</p><h2 class="text-4xl font-bold mt-2">24</h2><span class="text-xs mt-2 inline-block bg-teal-500/20 text-teal-300 px-2 py-1 rounded-full">+2 this month</span></div>
+  <div class="bg-white/5 border border-white/10 rounded-xl p-5"><p class="text-gray-400 text-sm">Total Manuscripts</p><h2 class="text-4xl font-bold mt-2">1,250</h2><span class="text-xs mt-2 inline-block bg-teal-500/20 text-teal-300 px-2 py-1 rounded-full">+37 this month</span></div>
+  <div class="bg-white/5 border border-white/10 rounded-xl p-5"><p class="text-gray-400 text-sm">Live Visitors</p><h2 class="text-4xl font-bold mt-2">86</h2><span class="text-xs mt-2 inline-block bg-blue-500/20 text-blue-300 px-2 py-1 rounded-full">Active now • +12</span></div>
+  <div class="bg-white/5 border border-white/10 rounded-xl p-5"><p class="text-gray-400 text-sm">AI Translations</p><h2 class="text-4xl font-bold mt-2">3,420</h2><span class="text-xs mt-2 inline-block bg-green-500/20 text-green-300 px-2 py-1 rounded-full">+120 today</span></div>
+</div>
+
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6">
+  <div class="md:col-span-2 bg-white/5 border border-white/10 rounded-xl p-5">
+    <h3 class="font-bold">Daily Visitors - Last 7 Days</h3>
+    <canvas id="barChart" class="mt-4"></canvas>
+  </div>
+  <div class="bg-white/5 border border-white/10 rounded-xl p-5">
+    <h3 class="font-bold">Manuscript Languages</h3>
+    <canvas id="pieChart" class="mt-4"></canvas>
+    <div class="text-xs mt-4 space-y-1 text-gray-300">
+      <p>🟢 Modi • 40%</p><p>🔵 Sanskrit • 25%</p><p>🟡 Pali • 20%</p><p>⚪ English • 15%</p>
+    </div>
+  </div>
+</div>
+
+<!-- Table -->
+<div class="bg-white text-black rounded-xl p-5 mt-6">
+  <h3 class="font-bold text-lg">Recent Activity</h3>
+  <table class="w-full mt-4 text-sm">
+    <tr class="text-gray-500 border-b"><th class="text-left py-2">Memorial Name</th><th>ID</th><th>Status</th><th>Last Scan</th></tr>
+    <tr class="border-b"><td class="py-2 font-medium">Dr. Ambedkar Memorial</td><td class="text-center">MS-1024</td><td class="text-center"><span class="bg-green-500 text-white px-2 py-1 rounded-full text-xs">Digitized</span></td><td class="text-center">2026-09-29 10:12</td></tr>
+    <tr class="border-b"><td class="py-2 font-medium">Chaitya Bhoomi</td><td class="text-center">MS-0897</td><td class="text-center"><span class="bg-blue-500 text-white px-2 py-1 rounded-full text-xs">Translating</span></td><td class="text-center">2026-09-29 09:45</td></tr>
+    <tr class="border-b"><td class="py-2 font-medium">Nagpur Manuscript</td><td class="text-center">MS-2110</td><td class="text-center"><span class="bg-yellow-600 text-white px-2 py-1 rounded-full text-xs">Pending</span></td><td class="text-center">2026-09-28 16:20</td></tr>
+    <tr><td class="py-2 font-medium">Dikshabhoomi Stupa</td><td class="text-center">MS-0502</td><td class="text-center"><span class="bg-green-500 text-white px-2 py-1 rounded-full text-xs">Digitized</span></td><td class="text-center">2026-09-29 08:30</td></tr>
+  </table>
+</div>
+
+<script>
+new Chart(document.getElementById('barChart'), {
+  type: 'bar',
+  data: { labels: ['Mon','Tue','Wed','Thu','Sat','Sun'], datasets: [{ label: 'Visitors', data: [15,35,55,75,98,102], backgroundColor: '#14b8a6', borderRadius: 8 }] },
+  options: { plugins:{legend:{display:false}}, scales:{y:{beginAtZero:true, ticks:{color:'#888'}}, x:{ticks:{color:'#888'}}} }
+});
+new Chart(document.getElementById('pieChart'), {
+  type: 'doughnut',
+  data: { labels: ['Modi','Sanskrit','Pali','English'], datasets: [{ data: [40,25,20,15], backgroundColor: ['#14b8a6','#3b82f6','#06b6d4','#93c5fd'] }] },
+  options: { plugins:{legend:{display:false}} }
+});
+</script>
+</body>
+</html>
